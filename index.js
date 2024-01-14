@@ -57,7 +57,7 @@ console.log(folderName);
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: folderName,
+    folder: "images",
     format: async (req, file) => "jpg",
     public_id: (req, file) => uuid.v4(),
   },
@@ -133,7 +133,6 @@ server.use(
   })
 );
 server.use(express.json()); // to parse req.body
-const a='00';
 server.use('/products', isAuth(), productsRouter.router);
 // we can also use JWT token for client-only auth
 server.use('/categories', isAuth(), categoriesRouter.router);
