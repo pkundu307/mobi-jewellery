@@ -260,6 +260,6 @@ async function main() {
   await mongoose.connect(process.env.MONGODB_URL);
 
 }
-server.listen(8080, () => {
+server.listen(process.env.PORT, () => {
  
 });
