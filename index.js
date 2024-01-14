@@ -126,11 +126,23 @@ server.use(
   })
 );
 server.use(passport.authenticate('session'));
-server.use(
-  cors({
-    exposedHeaders: ['X-Total-Count'],
-  })
-);
+
+// server.use(
+//   cors({
+//     exposedHeaders: ['X-Total-Count'],
+//   })
+// );
+
+const corsOptions = {
+  origin: 'http://localhost:3000', // or your frontend origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+server.use(cors(corsOptions));
+
+
 server.use(express.json()); // to parse req.body
 server.use('/products', isAuth(), productsRouter.router);
 // we can also use JWT token for client-only auth
