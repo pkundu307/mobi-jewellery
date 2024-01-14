@@ -134,7 +134,7 @@ server.use(passport.authenticate('session'));
 // );
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // or your frontend origin
+  origin: 'https://mern-ecommerce-kohl-ten.vercel.app', // or your frontend origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
