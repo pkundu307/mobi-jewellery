@@ -147,17 +147,32 @@ server.get('*', (req, res) =>
   res.sendFile(path.resolve('build', 'index.html'))
 );
 
+// server.post("/api/images", upload.single("image"), (req, res) => {
+
+//   const url = req.file.path;
+//   const color = req.body.color;
+//   const newImage = new Image({ url, color });
+//   newImage
+//     .save()
+//     .then(() => res.json("Image added!"))
+//     .catch((err) => res.status(400).json("Error: " + err));
+// });
 server.post("/api/images", upload.single("image"), (req, res) => {
+  try {
+    const url = req.file.secure_url; // Use secure_url for Cloudinary
+    const color = req.body.color;
 
-  const url = req.file.path;
-  const color = req.body.color;
-  const newImage = new Image({ url, color });
-  newImage
-    .save()
-    .then(() => res.json("Image added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
+    const newImage = new Image({ url, color });
+
+    newImage
+      .save()
+      .then(() => res.json("Image added!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ code: "500", message: "A server error has occurred" });
+  }
 });
-
 // Passport Strategies
 passport.use(
   'local',
