@@ -45,10 +45,19 @@ cloudinary.config({
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
 });
+//folder name
+const currentDate = new Date();
+const formattedDate = currentDate.toLocaleDateString('en-US', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+const folderName = formattedDate.replace(/\s+/g, ''); // Remove spaces
+console.log(folderName);
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "images",
+    folder: folderName,
     format: async (req, file) => "jpg",
     public_id: (req, file) => uuid.v4(),
   },
