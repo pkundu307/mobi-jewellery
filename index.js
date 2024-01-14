@@ -157,22 +157,44 @@ server.get('*', (req, res) =>
 //     .then(() => res.json("Image added!"))
 //     .catch((err) => res.status(400).json("Error: " + err));
 // });
+// server.post("/api/images", upload.single("image"), (req, res) => {
+//   try {
+//     const url = req.file.secure_url; // Use secure_url for Cloudinary
+//     const color = req.body.color;
+
+//     const newImage = new Image({ url, color });
+
+//     newImage
+//       .save()
+//       .then(() => res.json("Image added!"))
+//       .catch((err) => res.status(400).json("Error: " + err));
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ code: "500", message: "A server error has occurred" });
+//   }
+// });
+
 server.post("/api/images", upload.single("image"), (req, res) => {
   try {
-    const url = req.file.secure_url; // Use secure_url for Cloudinary
+    const url = req.file.secure_url;
     const color = req.body.color;
+
+    if (!url || !color) {
+      return res.status(400).json({ message: "Invalid request data" });
+    }
 
     const newImage = new Image({ url, color });
 
     newImage
       .save()
       .then(() => res.json("Image added!"))
-      .catch((err) => res.status(400).json("Error: " + err));
+      .catch((err) => res.status(500).json({ message: "Error saving image", error: err }));
   } catch (error) {
     console.error(error);
-    res.status(500).json({ code: "500", message: "A server error has occurred" });
+    res.status(500).json({ message: "A server error has occurred" });
   }
 });
+
 // Passport Strategies
 passport.use(
   'local',
