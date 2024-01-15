@@ -45,27 +45,27 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 //folder name
-const currentDate = new Date();
-const formattedDate = currentDate.toLocaleDateString('en-US', {
-  day: 'numeric',
-  month: 'short',
-  year: 'numeric',
-});
-const folderName = formattedDate.replace(/\s+/g, ''); // Remove spaces
-console.log(folderName);
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "images",
-    format: async (req, file) => "jpg",
-    public_id: (req, file) => uuid.v4(),
-  },
-});
+// const currentDate = new Date();
+// const formattedDate = currentDate.toLocaleDateString('en-US', {
+//   day: 'numeric',
+//   month: 'short',
+//   year: 'numeric',
+// });
+// const folderName = formattedDate.replace(/\s+/g, ''); // Remove spaces
+// console.log(folderName);
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: "images",
+//     format: async (req, file) => "jpg",
+//     public_id: (req, file) => uuid.v4(),
+//   },
+// });
 
 
 
 // configure multer middleware
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 // Webhook
 
@@ -168,28 +168,28 @@ server.get('*', (req, res) =>
 //     .then(() => res.json("Image added!"))
 //     .catch((err) => res.status(400).json("Error: " + err));
 // });
-server.post("/api/images", upload.single("image"), (req, res) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ message: "No file uploaded" });
-    }
+// server.post("/api/images", upload.single("image"), (req, res) => {
+//   try {
+//     if (!req.file) {
+//       return res.status(400).json({ message: "No file uploaded" });
+//     }
 
-    const url = req.file.secure_url;
+//     const url = req.file.secure_url;
 
-    const newImage = new Image({ url });
+//     const newImage = new Image({ url });
 
-    newImage
-      .save()
-      .then(() => res.json("Image added!"))
-      .catch((err) => {
-        console.error(err);
-        res.status(400).json({ message: "Error saving the image", error: err });
-      });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ code: "500", message: "A server error has occurred", error: error });
-  }
-});
+//     newImage
+//       .save()
+//       .then(() => res.json("Image added!"))
+//       .catch((err) => {
+//         console.error(err);
+//         res.status(400).json({ message: "Error saving the image", error: err });
+//       });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ code: "500", message: "A server error has occurred", error: error });
+//   }
+// });
 
 // Passport Strategies
 passport.use(
