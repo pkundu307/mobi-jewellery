@@ -1,5 +1,5 @@
 
-# CoderDost MERN Stack E-commerce Project - Backend Repository
+#  MERN Stack E-commerce Project - Backend Repository
 
 🔥🔥 WATCH HERE >> [Project Video](https://youtu.be/LH-S5v-D3hA)
 
