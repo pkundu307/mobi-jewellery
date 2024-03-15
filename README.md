@@ -1,18 +1,10 @@
 
 #  MERN Stack E-commerce Project - Backend Repository
 
-🔥🔥 WATCH HERE >> [Project Video](https://youtu.be/LH-S5v-D3hA)
+🔥🔥
 
 MERN E-Commerce (in Hindi) with Admin Panel, Redux Toolkit, Stripe Payment, Cloud Deployment, Email Invoice, and many features (complete features given below in Description )
 
-🔥 Code Repositories:
-- React [frontend] -  https://github.com/coderdost/MERN-ecommerce-Frontend
-- Node [backend] - https://github.com/coderdost/MERN-ecommerce-backend
-
-🔥Related MasterClasses:
-- React [ 10 Hours ] - https://youtu.be/6l8RWV8D-Yo 
-- NodeJS / Express/ Mongoose [ 12 hours ] - https://youtu.be/ChVE-JbtYbM
-- Redux [ 7 hours ] - https://youtu.be/1zCNdVhdvHE
 
 🔥 Related Videos :
 - Multer Middleware (for file upload) -  https://youtu.be/qfN6c5FEAQQ
